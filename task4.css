@@ -1,9 +1,9 @@
 *{
     font-family: Arial, sans-serif;
+    
 }
 h4{
     font-size: 15px;
-    display: flex;
 }
 body{
     background-color:beige;
@@ -11,27 +11,42 @@ body{
 
 form{
                 color: blue;
+                text-align: center;
                 background-color: beige;
-                padding: 20px 20px;
+                padding: 50px 20px;
+                margin: 80px 50px;
+                justify-self: center;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                background-color: transparent;
                 border: 5px solid rgba(225, 225, 225, .2);
-                backdrop-filter: blur(100px);
                 border-radius: 30px;
-                width: 25%;
-                position: absolute;
-                left:35%;
-                top: 30%;
+                height: 200px;
+                width: 400px;
+                margin-top: 5ppxx;
                 
 }
 #content{
-    left:35%;
-    top: 60%;
+    padding: 20px;
+    text-align: center;
 }
 input, select{
     border-radius: 30px;
-    display: flex;
+    display: inline;
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    font-size: 15px;
+}
+select{
+    width: 50%;
+    width: 200px;
+}
+input{
+    width: 170px
 }
 #nameTag, #taskTag{
-    display: flex;
+    display: inline;
+    padding-right: 10px;
+    font-size: 20px;
 }

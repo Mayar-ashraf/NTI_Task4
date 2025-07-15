@@ -39,20 +39,17 @@ form.addEventListener("submit", function(event) {
         var div = document.getElementById('content');
 
         let element = document.createElement('h4');
-        // element.id = `elm${tasks.length}`;
         element.style.color = color;
         element.innerText = `${task['taskName']}, ${task['taskType']}, ${task['dateAdded']}`;
        
         let deleteBtn = document.createElement('input');
         deleteBtn.type = "submit";
         deleteBtn.value = "Delete";
-        // deleteBtn.id = `delBtn${tasks.length}`;
 
         div.appendChild(element);
         div.appendChild(deleteBtn);
 
-        // EDIT TASK
-        
+        // EDIT TASK 
         element.addEventListener("click", function() {
 
             console.log("Element Clicked");
