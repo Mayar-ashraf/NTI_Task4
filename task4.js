@@ -1,21 +1,14 @@
-var submitButton = document.getElementById('submit');
+var form = document.getElementById('form');
 var tname = document.querySelector('#name');
 var type = document.querySelector('#type');
 var div = document.querySelector('#content');
 var tasks = []
 var date;
+console.log("entered here");
 
-function deleteEelement(tasks, task){
-    let deleteButton = document.getElementById(`delete${tasks.indexOf(task)}`);
-    let elementToDelete = document.getElementById(`element${tasks.indexOf(task)}`);
-    elementToDelete.remove();
-    deleteButton.remove();
+form.addEventListener("submit", function(event) {
 
-    tasks.splice(tasks.indexOf(task),1);
-}
-submitButton.onclick = function(e) {
-
-    e.preventDefault(); // To avoid page reloading
+    event.preventDefault(); // To avoid page reloading
 
     date = new Date();
     console.log(date);
@@ -30,7 +23,6 @@ submitButton.onclick = function(e) {
             dateAdded : date       
         };
         tasks.push(task);
-
         console.log(task);
         console.log(tasks);
 
@@ -44,18 +36,33 @@ submitButton.onclick = function(e) {
             default:
                 color = "red";
         }
-    
-        content.innerHTML += `<h4 id="element${tasks.indexOf(task)}" style="color:${color}">${task['taskName']}, ${task['taskType']}, ${task['dateAdded']}</h4> <input type="submit" value="Delete" id="delete${tasks.indexOf(task)}"> `;
+        var div = document.getElementById('content');
+
+        let element = document.createElement('h4');
+        // element.id = `elm${tasks.length}`;
+        element.style.color = color;
+        element.innerText = `${task['taskName']}, ${task['taskType']}, ${task['dateAdded']}`;
+       
+        let deleteBtn = document.createElement('input');
+        deleteBtn.type = "submit";
+        deleteBtn.value = "Delete";
+        // deleteBtn.id = `delBtn${tasks.length}`;
+
+        div.appendChild(element);
+        div.appendChild(deleteBtn);
+
         // EDIT TASK
-        elementToEdit = document.getElementById(`element${tasks.indexOf(task)}`);
-        elementToEdit.addEventListener("click", function() {
+        
+        element.addEventListener("click", function() {
 
             console.log("Element Clicked");
+            
             let editName = confirm(`Do you want to edit task name "${task['taskName']}"?`);
             if (editName){
                 var newName = prompt("Enter New Task Name:");
                 task['taskName'] = newName;
             }
+
             let editType = confirm(`Do you want to edit task type "${task['taskType']}"?`);
             if (editType){
                 var newType = prompt("Enter New Task Type: (In Progress, Done, Task)");
@@ -72,35 +79,35 @@ submitButton.onclick = function(e) {
                 }
             }
             
-            elementToEdit.innerText = `${task['taskName']}, ${task['taskType']}, ${task['dateAdded']}`
-            elementToEdit.style.color = color;
+            element.innerText = `${task['taskName']}, ${task['taskType']}, ${task['dateAdded']}`
+            element.style.color = color;
             console.log(color);
-            
             console.log(task);
-            
             console.log(tasks);
         });
 
         // DELETE TASK
-        let deleteButton = document.getElementById(`delete${tasks.indexOf(task)}`);
-        deleteButton.onclick = function(e) {
-
-            e.preventDefault();
-            deleteEelement(tasks, task);
+        deleteBtn.addEventListener("click", function() {
+            console.log(`delete for ${task.taskName}`);
+            
+            element.remove();
+            deleteBtn.remove();
+            tasks.splice(tasks.indexOf(task), 1);
             console.log(tasks);
             
-        }
+        });
     }
-    
-        var print; 
+    if(tasks.length > 0){
+        let print = ''; 
         tasks.forEach(function(task){
 
-            print += `Task Name: ${task['taskName']}
-                    Task Type: ${task['taskType']}
-                    Date Added: ${task['dateAdded']} \n
-            `
+                print += `Task Name: ${task['taskName']}
+                        Task Type: ${task['taskType']}
+                        Date Added: ${task['dateAdded']} \n
+                `
         });
         console.log(print);
         alert(print);
+    }
+});
 
-}

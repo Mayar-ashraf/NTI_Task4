@@ -1,5 +1,37 @@
 *{
     font-family: Arial, sans-serif;
-    font-size: large;
+}
+h4{
+    font-size: 15px;
+    display: flex;
+}
+body{
+    background-color:beige;
 }
 
+form{
+                color: blue;
+                background-color: beige;
+                padding: 20px 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                background-color: transparent;
+                border: 5px solid rgba(225, 225, 225, .2);
+                backdrop-filter: blur(100px);
+                border-radius: 30px;
+                width: 25%;
+                position: absolute;
+                left:35%;
+                top: 30%;
+                
+}
+#content{
+    left:35%;
+    top: 60%;
+}
+input, select{
+    border-radius: 30px;
+    display: flex;
+}
+#nameTag, #taskTag{
+    display: flex;
+}
